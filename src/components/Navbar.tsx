@@ -44,7 +44,7 @@ const Navbar = () => {
             />
             <div className="flex items-baseline font-bold text-lg">
               <span className="text-red-500">Trend</span>
-              <span className="text-blue-600">Malaya</span>
+              <span className="text-blue-600">Malayaa</span>
             </div>
           </a>
 
