@@ -242,7 +242,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600 text-sm">
-            Copyright © 2025 by TrendMalayaa Mobile Specialist. All rights reserved.
+            Copyright © 2026 by TrendMalayaa Mobile Specialist. All rights reserved.
           </p>
         </div>
       </div>
