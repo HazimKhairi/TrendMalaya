@@ -38,7 +38,7 @@ const Navbar = () => {
           >
             <Image
               src="/images/logo.png"
-              alt="TrendMalaya Logo"
+              alt="TrendMalayaa Logo"
               width={40}
               height={40}
             />

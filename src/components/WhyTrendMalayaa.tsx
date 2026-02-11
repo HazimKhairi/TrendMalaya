@@ -35,14 +35,14 @@ const valueCards = [
   },
 ];
 
-export default function WhyTrendMalaya() {
+export default function WhyTrendMalayaa() {
   return (
     <section className="w-full bg-[#F5F4F4] py-16">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 max-w-2xl">
-            Why TrendMalaya is the best <span className="italic">place</span> to
+            Why TrendMalayaa is the best <span className="italic">place</span> to
             fix your phone.
           </h3>
           <Link

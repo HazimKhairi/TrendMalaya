@@ -100,7 +100,7 @@ export default function CustomerReviews() {
                 Reviews are temporarily unavailable. Please check back later or visit our Google Business profile.
               </p>
               <a
-                href="https://www.google.com/search?q=TrendMalaya"
+                href="https://www.google.com/search?q=TrendMalayaa"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-[#008AFC] text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"

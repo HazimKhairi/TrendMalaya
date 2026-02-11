@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'TrendMalaya - Mobile Specialist',
-    short_name: 'TrendMalaya',
+    name: 'TrendMalayaa - Mobile Specialist',
+    short_name: 'TrendMalayaa',
     description: 'Your trusted mobile phone repair specialist in Malaysia. Phone repair, mobile sales, and accessories across 9 locations.',
     start_url: '/',
     display: 'standalone',

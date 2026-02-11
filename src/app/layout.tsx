@@ -13,11 +13,11 @@ const baseUrl = "https://trendmalaya.com";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "TrendMalaya - Mobile Specialist | Phone Repair & Sales Malaysia",
-    template: "%s | TrendMalaya",
+    default: "TrendMalayaa - Mobile Specialist | Phone Repair & Sales Malaysia",
+    template: "%s | TrendMalayaa",
   },
   description:
-    "TrendMalaya - Your trusted mobile specialist since 2021. Professional phone repair, mobile phone sales, and accessories across 9 locations in Perak, Penang, Kedah & Perlis. Lubuk phone & baik pulih murah. 10,000+ satisfied customers yearly.",
+    "TrendMalayaa - Your trusted mobile specialist since 2021. Professional phone repair, mobile phone sales, and accessories across 9 locations in Perak, Penang, Kedah & Perlis. Lubuk phone & baik pulih murah. 10,000+ satisfied customers yearly.",
   keywords: [
     "phone repair near me",
     "buy iPhone Malaysia",
@@ -30,19 +30,19 @@ export const metadata: Metadata = {
     "iphone harga borong",
     "phone repair Perak",
     "phone repair Penang",
-    "TrendMalaya",
+    "TrendMalayaa",
     "baiki phone murah",
     "kedai phone Ipoh",
     "kedai phone Penang",
   ],
-  authors: [{ name: "TrendMalaya" }],
-  creator: "TrendMalaya",
+  authors: [{ name: "TrendMalayaa" }],
+  creator: "TrendMalayaa",
   openGraph: {
     type: "website",
     locale: "ms_MY",
     url: baseUrl,
-    siteName: "TrendMalaya",
-    title: "TrendMalaya - Mobile Specialist | Phone Repair & Sales Malaysia",
+    siteName: "TrendMalayaa",
+    title: "TrendMalayaa - Mobile Specialist | Phone Repair & Sales Malaysia",
     description:
       "Professional phone repair, mobile sales & accessories across 9 locations in Malaysia. Trusted by 10,000+ customers yearly. Lubuk phone & baik pulih murah.",
     images: [
@@ -50,13 +50,13 @@ export const metadata: Metadata = {
         url: "/images/logo.png",
         width: 512,
         height: 512,
-        alt: "TrendMalaya Logo",
+        alt: "TrendMalayaa Logo",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "TrendMalaya - Mobile Specialist",
+    title: "TrendMalayaa - Mobile Specialist",
     description:
       "Professional phone repair, mobile sales & accessories across 9 locations in Malaysia.",
     images: ["/images/logo.png"],
@@ -83,7 +83,7 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${baseUrl}/#organization`,
-      name: "TrendMalaya",
+      name: "TrendMalayaa",
       url: baseUrl,
       logo: {
         "@type": "ImageObject",
@@ -103,7 +103,7 @@ const jsonLd = {
     },
     ...[
       {
-        name: "TrendMalaya Parit Buntar",
+        name: "TrendMalayaa Parit Buntar",
         address: "No 55, Jalan Maharaja, Pusat Bandar Baru, 34200 Parit Buntar, Perak",
         telephone: "+601156363571",
         locality: "Parit Buntar",
@@ -111,7 +111,7 @@ const jsonLd = {
         postalCode: "34200",
       },
       {
-        name: "TrendMalaya Bukit Mertajam",
+        name: "TrendMalayaa Bukit Mertajam",
         address: "No 53 (Ground Floor), Lorong Perda Utama 3, Taman Prominence, 14000 Bukit Mertajam, Pulau Pinang",
         telephone: "+601154070847",
         locality: "Bukit Mertajam",
@@ -119,7 +119,7 @@ const jsonLd = {
         postalCode: "14000",
       },
       {
-        name: "TrendMalaya Taiping",
+        name: "TrendMalayaa Taiping",
         address: "89, Jalan Taiping Utara, Taman Taiping Utara, 34600 Kamunting, Perak",
         telephone: "+60113760106",
         locality: "Kamunting",
@@ -127,7 +127,7 @@ const jsonLd = {
         postalCode: "34600",
       },
       {
-        name: "TrendMalaya Alor Setar",
+        name: "TrendMalayaa Alor Setar",
         address: "929, Jalan Sultan Badlishah, 05000 Alor Setar Kedah, Malaysia",
         telephone: "+60111670 1026",
         locality: "Alor Setar",
@@ -135,7 +135,7 @@ const jsonLd = {
         postalCode: "05000",
       },
       {
-        name: "TrendMalaya Seri Iskandar",
+        name: "TrendMalayaa Seri Iskandar",
         address: "No 147, PSRN SIBC 9, Bandar Seri Iskandar 32610 Perak, Malaysia",
         telephone: "+60183143237",
         locality: "Seri Iskandar",
@@ -143,7 +143,7 @@ const jsonLd = {
         postalCode: "32610",
       },
       {
-        name: "TrendMalaya Bayan Baru",
+        name: "TrendMalayaa Bayan Baru",
         address: "1-1-2 Tingkat Mahsuri 2, 1-Sky Commercial Lot, 11950 Bayan Lepas Penang, Malaysia",
         telephone: "+60186600765",
         locality: "Bayan Lepas",
@@ -151,7 +151,7 @@ const jsonLd = {
         postalCode: "11950",
       },
       {
-        name: "TrendMalaya Ipoh",
+        name: "TrendMalayaa Ipoh",
         address: "109, Jalan Kamaruddin Isa, Taman Fair Park, 31400 Ipoh, Perak",
         telephone: "+60176060658",
         locality: "Ipoh",
@@ -159,7 +159,7 @@ const jsonLd = {
         postalCode: "31400",
       },
       {
-        name: "TrendMalaya Manjung",
+        name: "TrendMalayaa Manjung",
         address: "NO 312(Bawah), Jalan PPMP 3/2, Pusat Perniagaan Manjung Point 3, 32040 Seri Manjung, Perak",
         telephone: "+60173176660",
         locality: "Seri Manjung",
@@ -167,7 +167,7 @@ const jsonLd = {
         postalCode: "32040",
       },
       {
-        name: "TrendMalaya Kangar",
+        name: "TrendMalayaa Kangar",
         address: "No 18 (GF) Jalan Kangar Jaya 4, Kangar Jaya, Jalan Tuanku Syed Putra, 01000 Kangar, Perlis",
         telephone: "+60179766002",
         locality: "Kangar",

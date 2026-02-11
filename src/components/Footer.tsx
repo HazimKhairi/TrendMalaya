@@ -106,13 +106,13 @@ export default function Footer() {
               <div className="relative w-10 h-10">
                 <Image
                   src="/images/logo.png"
-                  alt="TrendMalaya Logo"
+                  alt="TrendMalayaa Logo"
                   width={40}
                   height={40}
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-bold text-gray-900">TrendMalaya</span>
+              <span className="text-xl font-bold text-gray-900">TrendMalayaa</span>
             </div>
 
             <p className="text-gray-600 leading-relaxed">
@@ -242,7 +242,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-center text-gray-600 text-sm">
-            Copyright © 2025 by TrendMalaya Mobile Specialist. All rights reserved.
+            Copyright © 2025 by TrendMalayaa Mobile Specialist. All rights reserved.
           </p>
         </div>
       </div>

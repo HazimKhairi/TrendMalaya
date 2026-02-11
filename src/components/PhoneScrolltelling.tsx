@@ -175,7 +175,7 @@ const PhoneScrolltelling = () => {
               Professional repair services for Samsung, Apple, Google, and more
             </p>
             <div className="inline-block px-6 py-2 rounded-full bg-[#008AFC] text-white font-semibold text-lg">
-              TrendMalaya - Mobile Specialist
+              TrendMalayaa - Mobile Specialist
             </div>
           </motion.div>
         </motion.div>
@@ -365,7 +365,7 @@ const PhoneScrolltelling = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="text-white/50 text-sm mt-12"
           >
-            TrendMalaya - Established 2021 | lubuk phone & baik pulih murah
+            TrendMalayaa - Established 2021 | lubuk phone & baik pulih murah
           </motion.p>
         </motion.div>
       </section>
