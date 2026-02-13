@@ -14,6 +14,9 @@ body {
   background: #ffffff;
   color: #171717;
   font-family: var(--font-poppins), Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 @keyframes marqueeScroll {
@@ -47,5 +50,67 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Custom styles for Trustindex reviews */
+.trustindex-reviews-spacing {
+  /* Add more spacing between review cards */
+  & div[class*="ti-widget"] {
+    gap: 1.5rem !important;
+  }
+
+  /* Add shadows to review cards */
+  & div[class*="ti-review-item"],
+  & div[class*="review-card"],
+  & .ti-review-item {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    border-radius: 16px !important;
+    margin-bottom: 1.5rem !important;
+    padding: 1.5rem !important;
+    background: white !important;
+    transition: box-shadow 0.3s ease !important;
+  }
+
+  /* Hover effect on review cards */
+  & div[class*="ti-review-item"]:hover,
+  & div[class*="review-card"]:hover,
+  & .ti-review-item:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Spacing for grid layout */
+  & div[class*="ti-reviews-container"],
+  & div[class*="reviews-grid"] {
+    gap: 1.5rem !important;
+  }
+}
+
+/* Custom styles for TikTok widget */
+.tiktok-widget-shadow {
+  /* Add subtle shadow to TikTok video container */
+  & .tagembed-widget {
+    padding: 1.5rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Add shadow to individual video cards */
+  & div[class*="video"],
+  & div[class*="item"],
+  & iframe {
+    border-radius: 12px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    transition: box-shadow 0.3s ease !important;
+  }
+
+  /* Hover effect on video cards */
+  & div[class*="video"]:hover,
+  & div[class*="item"]:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12) !important;
   }
 }

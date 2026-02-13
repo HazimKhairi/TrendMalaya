@@ -11,9 +11,18 @@ import {
 } from "react-icons/fa";
 
 const services = [
-  { name: "Mobile Phone Sales", href: "#services" },
-  { name: "Professional Phone Repair", href: "#services" },
-  { name: "Accessories & Gadgets", href: "#services" },
+  { name: "iPhone & Smartphone Sales", href: "#services" },
+  { name: "Same-Day Professional Repair", href: "#services" },
+  { name: "Premium Accessories & Gadgets", href: "#services" },
+  { name: "Easy Installments & Payment Options", href: "#services" },
+];
+
+const quickLinks = [
+  { name: "About Us", href: "#hero" },
+  { name: "Contact Us", href: "https://wa.me/60374959092?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you." },
+  { name: "Privacy Policy", href: "#" },
+  { name: "Terms & Conditions", href: "#" },
+  { name: "Careers", href: "#" },
 ];
 
 const locations = [
@@ -97,13 +106,20 @@ export default function Footer() {
   const column2Locations = locations.slice(5, 9);
 
   return (
-    <footer id="footer" className="w-full bg-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <footer id="footer" className="w-full bg-gray-900 text-white py-12 sm:py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Tagline */}
+        <div className="text-center mb-8 sm:mb-12">
+          <p className="text-base sm:text-lg md:text-xl font-bold text-red-500 px-4">
+            Malaysia's Trusted Mobile Specialist with Multiple Branches Nationwide.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 sm:gap-10 lg:gap-8 mb-12">
           {/* Column 1 - Brand */}
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6 lg:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10">
+              <div className="relative w-10 h-10 flex-shrink-0">
                 <Image
                   src="/images/logo.png"
                   alt="TrendMalayaa Logo"
@@ -112,55 +128,64 @@ export default function Footer() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-xl font-bold text-gray-900">TrendMalayaa</span>
+              <div className="flex flex-col">
+                <span className="text-lg sm:text-xl font-bold">
+                  <span className="text-red-500">Trend</span>
+                  <span className="text-white">Malayaa</span>
+                </span>
+                <span className="text-xs text-gray-400">Mobile Shop MY</span>
+              </div>
             </div>
 
-            <p className="text-gray-600 leading-relaxed">
-              Your trusted mobile phone repair specialist in Malaysia. We provide
-              quality repairs with genuine parts and exceptional customer service
-              across multiple locations.
+            <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
+              Your trusted mobile phone repair specialist in Malaysia. We provide quality repairs with genuine parts and exceptional customer service across multiple locations.
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4">
+            <div className="flex gap-3 sm:gap-4">
               <Link
                 href="https://www.tiktok.com/@syafi.sayuti"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Follow us on TikTok"
               >
-                <FaTiktok className="text-gray-800 text-lg" />
+                <FaTiktok className="text-white text-lg" />
               </Link>
               <Link
                 href="https://www.instagram.com/trendmalayaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Follow us on Instagram"
               >
-                <FaInstagram className="text-gray-800 text-lg" />
+                <FaInstagram className="text-white text-lg" />
               </Link>
               <Link
                 href="https://www.facebook.com/trendmalayaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-red-600 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Follow us on Facebook"
               >
-                <FaFacebook className="text-gray-800 text-lg" />
+                <FaFacebook className="text-white text-lg" />
               </Link>
             </div>
           </div>
 
           {/* Column 2 - Our Services */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900 mb-6">Our Services</h6>
-            <ul className="space-y-3">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-red-500 pb-2 inline-block">
+              Our Services
+            </h6>
+            <ul className="space-y-2 sm:space-y-3">
               {services.map((service) => (
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors group"
+                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-red-500 transition-colors group min-h-[44px] py-1"
                   >
-                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform" />
+                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-red-500 flex-shrink-0" />
                     <span>{service.name}</span>
                   </Link>
                 </li>
@@ -168,33 +193,55 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 - Locations Part 1 */}
+          {/* Column 3 - Quick Links */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900 mb-6">Our Locations</h6>
-            <div className="space-y-6">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-red-500 pb-2 inline-block">
+              Quick Links
+            </h6>
+            <ul className="space-y-2 sm:space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-red-500 transition-colors group min-h-[44px] py-1"
+                  >
+                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-red-500 flex-shrink-0" />
+                    <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 4 - Locations Part 1 */}
+          <div>
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-red-500 pb-2 inline-block">
+              Our Locations
+            </h6>
+            <div className="space-y-3 sm:space-y-5 md:space-y-6">
               {column1Locations.map((location) => (
-                <div key={location.id} className="space-y-2">
-                  <h6 className="font-bold text-gray-900">{location.name}</h6>
-                  <p className="text-sm text-gray-600">{location.address}</p>
-                  <p className="text-sm text-gray-600">{location.hours}</p>
-                  <div className="flex gap-2 flex-wrap">
+                <div key={location.id} className="space-y-0.5 sm:space-y-2">
+                  <h6 className="font-bold text-white text-sm sm:text-base leading-tight sm:leading-normal">{location.name}</h6>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-snug sm:leading-relaxed">{location.address}</p>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-tight sm:leading-normal">{location.hours}</p>
+                  <div className="flex gap-1.5 sm:gap-2 flex-wrap pt-0.5 sm:pt-1">
                     <Link
                       href={location.wazeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-2 rounded-full transition-colors"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[36px] rounded-full transition-colors"
                     >
-                      <FaMapMarkedAlt />
+                      <FaMapMarkedAlt className="flex-shrink-0 text-xs sm:text-sm" />
                       <span>Waze</span>
                     </Link>
                     <Link
-                      href={`https://wa.me/6${location.phone.replace(/[^0-9]/g, "")}`}
+                      href={`https://wa.me/6${location.phone.replace(/[^0-9]/g, "")}?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-2 rounded-full transition-colors"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[36px] rounded-full transition-colors"
                     >
-                      <FaWhatsapp />
-                      <span>{location.phone}</span>
+                      <FaWhatsapp className="flex-shrink-0 text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{location.phone}</span>
                     </Link>
                   </div>
                 </div>
@@ -202,35 +249,35 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 4 - Locations Part 2 */}
+          {/* Column 5 - Locations Part 2 */}
           <div>
-            <h6 className="text-lg font-bold text-gray-900 mb-6 invisible md:visible">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 hidden md:block border-b-2 border-red-500 pb-2">
               &nbsp;
             </h6>
-            <div className="space-y-6">
+            <div className="space-y-3 sm:space-y-5 md:space-y-6">
               {column2Locations.map((location) => (
-                <div key={location.id} className="space-y-2">
-                  <h6 className="font-bold text-gray-900">{location.name}</h6>
-                  <p className="text-sm text-gray-600">{location.address}</p>
-                  <p className="text-sm text-gray-600">{location.hours}</p>
-                  <div className="flex gap-2 flex-wrap">
+                <div key={location.id} className="space-y-0.5 sm:space-y-2">
+                  <h6 className="font-bold text-white text-sm sm:text-base leading-tight sm:leading-normal">{location.name}</h6>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-snug sm:leading-relaxed">{location.address}</p>
+                  <p className="text-xs sm:text-sm text-gray-400 leading-tight sm:leading-normal">{location.hours}</p>
+                  <div className="flex gap-1.5 sm:gap-2 flex-wrap pt-0.5 sm:pt-1">
                     <Link
                       href={location.wazeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-2 rounded-full transition-colors"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[36px] rounded-full transition-colors"
                     >
-                      <FaMapMarkedAlt />
+                      <FaMapMarkedAlt className="flex-shrink-0 text-xs sm:text-sm" />
                       <span>Waze</span>
                     </Link>
                     <Link
-                      href={`https://wa.me/6${location.phone.replace(/[^0-9]/g, "")}`}
+                      href={`https://wa.me/6${location.phone.replace(/[^0-9]/g, "")}?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you.`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-2 rounded-full transition-colors"
+                      className="inline-flex items-center gap-1.5 sm:gap-2 bg-green-600 hover:bg-green-700 text-white text-xs sm:text-sm px-2.5 sm:px-3 py-1.5 sm:py-2 min-h-[36px] rounded-full transition-colors"
                     >
-                      <FaWhatsapp />
-                      <span>{location.phone}</span>
+                      <FaWhatsapp className="flex-shrink-0 text-xs sm:text-sm" />
+                      <span className="whitespace-nowrap">{location.phone}</span>
                     </Link>
                   </div>
                 </div>
@@ -239,10 +286,19 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* SEO Paragraph */}
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800">
+          <div className="max-w-5xl mx-auto px-4">
+            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed text-center">
+              <strong className="text-white">TrendMalayaa</strong> is a trusted <strong className="text-red-500">kedai phone</strong> dan <strong className="text-red-500">iPhone repair specialist</strong> in Malaysia with branches in <strong className="text-white">Parit Buntar, Taiping, Alor Setar, Kangar, Ipoh, Manjung, Bayan Baru</strong> and more. We provide professional <strong className="text-white">phone repair, iPhone sales, accessories</strong> and <strong className="text-white">installment options</strong> with fast and reliable service.
+            </p>
+          </div>
+        </div>
+
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-600 text-sm">
-            Copyright © 2026 by TrendMalayaa Mobile Specialist. All rights reserved.
+        <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-800">
+          <p className="text-center text-gray-500 text-xs sm:text-sm px-4">
+            Copyright © 2026 by <span className="text-red-500 font-semibold">TrendMalayaa</span> Mobile Specialist. All rights reserved.
           </p>
         </div>
       </div>
