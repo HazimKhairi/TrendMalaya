@@ -34,17 +34,23 @@ const Navbar = () => {
           <a
             href="#hero"
             onClick={(e) => handleScroll(e, '#hero')}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 sm:gap-3"
           >
             <Image
               src="/images/logo.png"
               alt="TrendMalayaa Logo"
               width={40}
               height={40}
+              className="flex-shrink-0"
             />
-            <div className="flex items-baseline font-bold text-lg">
-              <span className="text-red-500">Trend</span>
-              <span className="text-blue-600">Malayaa</span>
+            <div className="flex flex-col">
+              <div className="flex items-baseline font-bold text-lg sm:text-xl">
+                <span className="text-red-600">Trend</span>
+                <span className="text-black">Malayaa</span>
+              </div>
+              <span className="text-xs sm:text-sm font-medium text-red-600 -mt-1">
+                Mobile Shop MY
+              </span>
             </div>
           </a>
 
@@ -55,7 +61,7 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className="text-black hover:text-[#008AFC] px-3 py-2 text-base font-bold transition-colors"
+                className="text-black hover:text-red-600 px-3 py-2 text-base font-bold transition-colors"
               >
                 {link.label}
               </a>
@@ -65,7 +71,7 @@ const Navbar = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-gray-600 hover:text-gray-800 transition"
+            className="md:hidden p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-gray-600 hover:text-gray-800 transition"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? (
@@ -79,13 +85,13 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden pb-4">
-            <div className="flex flex-col space-y-2">
+            <div className="flex flex-col space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className="text-black hover:text-[#008AFC] block px-3 py-2 rounded-md text-base font-bold hover:bg-gray-100 transition"
+                  className="text-black hover:text-red-600 block px-4 py-3 min-h-[44px] rounded-md text-base font-bold hover:bg-gray-100 transition"
                 >
                   {link.label}
                 </a>

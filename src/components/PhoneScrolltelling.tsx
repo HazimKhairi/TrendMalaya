@@ -334,7 +334,7 @@ const PhoneScrolltelling = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <motion.a
-              href="https://wa.me/601156363571"
+              href="https://wa.me/601156363571?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you."
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 rounded-full bg-[#25D366] text-white font-semibold text-lg hover:bg-[#1fb855] transition-colors flex items-center gap-2 shadow-lg shadow-[#25D366]/20"

@@ -19,7 +19,7 @@ const services = [
 
 const quickLinks = [
   { name: "About Us", href: "#hero" },
-  { name: "Contact Us", href: "https://wa.me/60374959092?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you." },
+  { name: "Contact Us", href: "https://wa.me/601156363571?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you." },
   { name: "Privacy Policy", href: "#" },
   { name: "Terms & Conditions", href: "#" },
   { name: "Careers", href: "#" },
