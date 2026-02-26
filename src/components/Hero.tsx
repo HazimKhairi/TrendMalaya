@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useCallback, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaStar, FaChevronRight } from "react-icons/fa";
@@ -13,6 +13,7 @@ const GoogleIcon = ({ size = 20 }: { size?: number }) => (
     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
   </svg>
 );
+
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -22,6 +23,101 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const phoneRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
+  const revealRef = useRef<HTMLDivElement>(null);
+  const particleContainerRef = useRef<HTMLDivElement>(null);
+  const [isHovering, setIsHovering] = useState(false);
+  const particleIdRef = useRef(0);
+  const lastSpawnRef = useRef(0);
+
+  // Cleanup particles that have finished animating
+  useEffect(() => {
+    if (!isHovering) return;
+    const interval = setInterval(() => {
+      if (!particleContainerRef.current) return;
+      const particles = particleContainerRef.current.querySelectorAll(".fire-particle");
+      particles.forEach((p) => {
+        if (p.getAnimations().length === 0) {
+          p.remove();
+        }
+      });
+    }, 500);
+    return () => clearInterval(interval);
+  }, [isHovering]);
+
+  const spawnFireParticle = useCallback((x: number, y: number) => {
+    if (!particleContainerRef.current) return;
+    const now = Date.now();
+    if (now - lastSpawnRef.current < 40) return; // throttle
+    lastSpawnRef.current = now;
+
+    const colors = ["#008AFC", "#7C3AED", "#F59E0B", "#10B981", "#EC4899"];
+    const color = colors[particleIdRef.current % colors.length];
+    particleIdRef.current++;
+
+    const size = 4 + Math.random() * 6;
+    const particle = document.createElement("div");
+    particle.className = "fire-particle";
+    particle.style.cssText = `
+      position: absolute;
+      left: ${x}px;
+      top: ${y}px;
+      width: ${size}px;
+      height: ${size}px;
+      border-radius: 50%;
+      background: ${color};
+      box-shadow: 0 0 ${size * 2}px ${color}, 0 0 ${size * 4}px ${color}40;
+      pointer-events: none;
+      z-index: 40;
+      transform: translate(-50%, -50%);
+    `;
+
+    particleContainerRef.current.appendChild(particle);
+
+    const xDrift = (Math.random() - 0.5) * 60;
+    const yDrift = -(30 + Math.random() * 50);
+    const rotation = (Math.random() - 0.5) * 90;
+
+    particle.animate(
+      [
+        { opacity: 0.8, transform: "translate(-50%, -50%) scale(1)" },
+        { opacity: 1, transform: `translate(calc(-50% + ${xDrift * 0.3}px), calc(-50% + ${yDrift * 0.3}px)) scale(1.5)` },
+        { opacity: 0, transform: `translate(calc(-50% + ${xDrift}px), calc(-50% + ${yDrift}px)) scale(0)` },
+      ],
+      {
+        duration: 600 + Math.random() * 400,
+        easing: "cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+        fill: "forwards",
+      }
+    ).onfinish = () => particle.remove();
+  }, []);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!imageContainerRef.current || !revealRef.current) return;
+
+    const rect = imageContainerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const xPercent = (x / rect.width) * 100;
+    const yPercent = (y / rect.height) * 100;
+
+    revealRef.current.style.clipPath = `circle(15% at ${xPercent}% ${yPercent}%)`;
+
+    // Spawn fire particle at cursor
+    spawnFireParticle(x, y);
+  }, [spawnFireParticle]);
+
+  const handleMouseEnter = useCallback(() => {
+    setIsHovering(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsHovering(false);
+    if (revealRef.current) {
+      revealRef.current.style.clipPath = `circle(0% at 50% 50%)`;
+    }
+  }, []);
 
   useGSAP(
     () => {
@@ -110,14 +206,22 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right - Phone Image with blob shape */}
+          {/* Right - Phone Image with cursor reveal effect */}
           <div ref={phoneRef} className="flex-1 w-full flex justify-center lg:justify-end hero-phone">
-            <div className="relative w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] lg:w-[520px] lg:h-[520px]">
+            <div
+              ref={imageContainerRef}
+              className="relative w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] lg:w-[520px] lg:h-[520px] cursor-none"
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
               {/* Blob background shape */}
               <div
                 className="absolute inset-[-10%] bg-gradient-to-br from-[#F0F7FF] via-[#F5F0FF] to-[#FFF8F0] opacity-80"
                 style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
               />
+
+              {/* Base image - product.png */}
               <Image
                 src="/images/product.png"
                 alt="Premium mobile phones - TrendMalayaa mobile specialist Malaysia"
@@ -126,6 +230,32 @@ export default function Hero() {
                 className="object-contain relative z-10 drop-shadow-2xl"
                 sizes="(max-width: 640px) 340px, (max-width: 1024px) 420px, 520px"
               />
+
+              {/* Reveal image - product-2.jpeg, only visible in circle around cursor */}
+              <div
+                ref={revealRef}
+                className="absolute inset-0 z-20 transition-[clip-path] duration-200 ease-out"
+                style={{ clipPath: "circle(0% at 50% 50%)" }}
+              >
+                <Image
+                  src="/images/product-2.jpeg"
+                  alt="Phone repair services - TrendMalayaa"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  sizes="(max-width: 640px) 340px, (max-width: 1024px) 420px, 520px"
+                />
+              </div>
+
+              {/* Fire particle container */}
+              <div
+                ref={particleContainerRef}
+                className="absolute inset-0 z-30 pointer-events-none overflow-visible"
+              />
+
+              {/* Custom cursor glow - visible only on hover */}
+              {isHovering && (
+                <div className="pointer-events-none absolute inset-0 z-30" />
+              )}
             </div>
           </div>
         </div>

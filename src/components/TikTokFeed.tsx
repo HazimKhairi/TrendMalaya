@@ -27,6 +27,7 @@ export default function TikTokFeed() {
         scrollTrigger: {
           trigger: ".tiktok-heading",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -39,6 +40,7 @@ export default function TikTokFeed() {
         scrollTrigger: {
           trigger: ".tiktok-stat",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
     },

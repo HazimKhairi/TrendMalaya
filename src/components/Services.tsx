@@ -102,6 +102,7 @@ const Services = () => {
         scrollTrigger: {
           trigger: ".services-heading",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -115,6 +116,7 @@ const Services = () => {
         scrollTrigger: {
           trigger: ".service-card",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
     },

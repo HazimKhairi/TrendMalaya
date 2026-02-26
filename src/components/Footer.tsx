@@ -138,6 +138,7 @@ export default function Footer() {
         scrollTrigger: {
           trigger: footerRef.current,
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
     },

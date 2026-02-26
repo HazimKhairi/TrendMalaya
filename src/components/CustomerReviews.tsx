@@ -70,6 +70,7 @@ export default function CustomerReviews() {
         scrollTrigger: {
           trigger: ".reviews-heading",
           start: "top 85%",
+          toggleActions: "play none none reverse",
         },
       });
 
@@ -113,6 +114,7 @@ export default function CustomerReviews() {
         scrollTrigger: {
           trigger: ".reviews-cta",
           start: "top 90%",
+          toggleActions: "play none none reverse",
         },
       });
     },
@@ -132,7 +134,7 @@ export default function CustomerReviews() {
                 <FaStar key={star} className="text-yellow-400 text-lg" />
               ))}
             </div>
-            <span className="text-sm font-semibold text-gray-700">5.0</span>
+            <span className="text-sm font-semibold text-gray-700">4.9</span>
           </div>
 
           <h2
