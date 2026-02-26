@@ -45,10 +45,10 @@ const Navbar = () => {
             />
             <div className="flex flex-col">
               <div className="flex items-baseline font-bold text-lg sm:text-xl">
-                <span className="text-red-600">Trend</span>
+                <span className="text-[#008AFC]">Trend</span>
                 <span className="text-black">Malayaa</span>
               </div>
-              <span className="text-xs sm:text-sm font-medium text-red-600 -mt-1">
+              <span className="text-xs sm:text-sm font-medium text-[#008AFC] -mt-1">
                 Mobile Shop MY
               </span>
             </div>
@@ -61,7 +61,7 @@ const Navbar = () => {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleScroll(e, link.href)}
-                className="text-black hover:text-red-600 px-3 py-2 text-base font-bold transition-colors"
+                className="text-black hover:text-[#008AFC] px-3 py-2 text-base font-bold transition-colors"
               >
                 {link.label}
               </a>
@@ -91,7 +91,7 @@ const Navbar = () => {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className="text-black hover:text-red-600 block px-4 py-3 min-h-[44px] rounded-md text-base font-bold hover:bg-gray-100 transition"
+                  className="text-black hover:text-[#008AFC] block px-4 py-3 min-h-[44px] rounded-md text-base font-bold hover:bg-gray-100 transition"
                 >
                   {link.label}
                 </a>

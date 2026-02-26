@@ -1,278 +1,134 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaWhatsapp, FaMapMarkerAlt, FaStar } from "react-icons/fa";
-import { SiGoogle } from "react-icons/si";
+import { FaStar, FaChevronRight } from "react-icons/fa";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
+const GoogleIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+  </svg>
+);
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut" as const,
-    },
-  },
-};
-
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.95, x: 50 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    x: 0,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut" as const,
-    },
-  },
-};
-
-const buttonHover = {
-  scale: 1.05,
-  transition: {
-    duration: 0.2,
-    ease: "easeOut" as const,
-  },
-};
-
-const carouselImages = [
-  {
-    src: "/images/new_images/point_2_1.png",
-    alt: "TrendMalayaa staff serving customers - Professional mobile phone specialist",
-  },
-  {
-    src: "/images/new_images/point_2.png",
-    alt: "TrendMalayaa store atmosphere - Trusted mobile phone shop Malaysia",
-  },
-  {
-    src: "/images/new_images/with_product.png",
-    alt: "TrendMalayaa with premium mobile phones - iPhone sales Malaysia",
-  },
-  {
-    src: "/images/new_images/with_product_2.png",
-    alt: "TrendMalayaa team with quality products - Mobile phone specialist",
-  },
-  {
-    src: "/images/new_images/people_busy.png",
-    alt: "TrendMalayaa busy store with customers - Trusted mobile phone shop Malaysia",
-  },
-];
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function Hero() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
 
-  // Auto-rotate carousel every 4 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 4000);
+  useGSAP(
+    () => {
+      // Text reveal
+      gsap.from(".hero-text > *", {
+        y: 60,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
 
-    return () => clearInterval(interval);
-  }, []);
+      // Phone image parallax on scroll
+      if (phoneRef.current) {
+        gsap.to(phoneRef.current, {
+          y: -60,
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.5,
+          },
+        });
+      }
+
+      // Phone float-in from right
+      gsap.from(".hero-phone", {
+        x: 80,
+        opacity: 0,
+        duration: 1.2,
+        delay: 0.3,
+        ease: "power3.out",
+      });
+    },
+    { scope: sectionRef }
+  );
 
   return (
-    <section id="hero" className="relative bg-gradient-to-br from-gray-50 via-white to-gray-50 overflow-hidden">
-      {/* Subtle decorative elements */}
-      <div className="absolute inset-0 opacity-[0.02]">
-        <div className="absolute top-40 left-20 w-96 h-96 bg-black rounded-full blur-3xl"></div>
-        <div className="absolute bottom-40 right-20 w-96 h-96 bg-gray-600 rounded-full blur-3xl"></div>
-      </div>
-
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-16 lg:py-24">
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* Left Column - Content */}
-          <motion.div className="flex flex-col justify-center space-y-8" variants={itemVariants}>
-            {/* Trust Badge */}
-            <motion.div
-              className="inline-flex items-center gap-2 bg-black text-white rounded-full px-5 py-2.5 w-fit"
-              variants={itemVariants}
+    <section ref={sectionRef} id="hero" className="relative bg-white overflow-hidden">
+      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 py-16 lg:py-28">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+          {/* Left - Text Content */}
+          <div className="flex-1 w-full hero-text">
+            <h1
+              className="text-5xl sm:text-6xl lg:text-[5.5rem] font-extrabold text-gray-900 leading-[1.02] tracking-tight mb-6"
+              style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
-              <div className="flex gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <FaStar key={i} size={12} className="text-yellow-400" />
-                ))}
-              </div>
-              <span className="text-sm font-semibold">Trusted Since 2021</span>
-            </motion.div>
+              No. 1 Mobile
+              <br />
+              Specialist
+              <br />
+              MY
+            </h1>
 
-            {/* Main Heading - Elegant Typography */}
-            <motion.div variants={itemVariants}>
-              <motion.h1
-                className="font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight text-gray-900"
-                style={{ fontFamily: "Helvetica, sans-serif" }}
-              >
-                Malaysia's Trusted
-                <br />
-                <span className="bg-gradient-to-r from-gray-900 via-gray-700 to-gray-900 bg-clip-text text-transparent">
-                  Mobile Specialist
-                </span>
-              </motion.h1>
-              <motion.p
-                className="text-lg sm:text-xl lg:text-2xl text-gray-600 mt-4 max-w-lg"
-                variants={itemVariants}
-              >
-                Premium phones, expert repairs & genuine accessories across 9 branches
-              </motion.p>
-            </motion.div>
+            <p className="text-lg sm:text-xl text-gray-400 mb-10 max-w-md">
+              We can fix your phone.
+            </p>
 
-            {/* Stats Row */}
-            <motion.div
-              className="flex flex-wrap gap-6 lg:gap-8"
-              variants={itemVariants}
-            >
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-gray-900">50,000+</span>
-                <span className="text-sm text-gray-600 font-medium">Happy Customers</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-gray-900">9</span>
-                <span className="text-sm text-gray-600 font-medium">Branches</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-3xl sm:text-4xl font-bold text-gray-900">5.0</span>
-                <span className="text-sm text-gray-600 font-medium">Google Rating</span>
-              </div>
-            </motion.div>
-
-            {/* Primary CTAs */}
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3 sm:gap-4"
-              variants={itemVariants}
-            >
-              {/* WhatsApp Button - Primary */}
-              <motion.a
-                href="https://wa.me/601156363571?text=Hi%20TrendMalayaa%20I%20would%20like%20to%20enquire%20about%20your%20iPhone%20prices%2C%20repair%20services%20or%20latest%20promotions.%20Thank%20you."
+            <div className="flex flex-wrap items-center gap-5">
+              {/* Start Repair CTA */}
+              <a
+                href="https://wa.me/601156363571"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-black hover:bg-gray-800 text-white font-semibold px-6 sm:px-8 py-4 min-h-[48px] rounded-lg flex items-center justify-center gap-2 sm:gap-3 transition-all text-sm sm:text-base group flex-1"
-                whileHover={buttonHover}
-                whileTap={{ scale: 0.98 }}
+                className="bg-[#008AFC] hover:bg-[#0070d0] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-colors text-base shadow-lg shadow-blue-200/50 hover:shadow-blue-300/60"
               >
-                <FaWhatsapp size={20} className="group-hover:scale-110 transition-transform flex-shrink-0" />
-                <span className="whitespace-nowrap">Contact Us on WhatsApp</span>
-              </motion.a>
+                Start Repair
+                <FaChevronRight size={12} />
+              </a>
 
-              {/* Find Branch Button */}
-              <motion.a
-                href="#footer"
-                className="bg-white hover:bg-gray-50 text-gray-900 font-semibold px-6 sm:px-8 py-4 min-h-[48px] rounded-lg border-2 border-gray-200 flex items-center justify-center gap-2 sm:gap-3 transition-all text-sm sm:text-base group flex-1"
-                whileHover={buttonHover}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FaMapMarkerAlt size={18} className="flex-shrink-0" />
-                <span className="whitespace-nowrap">Find Our Stores</span>
-              </motion.a>
-            </motion.div>
-
-            {/* Google Review & Branch Info */}
-            <motion.div
-              className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4"
-              variants={itemVariants}
-            >
+              {/* Google Review */}
               <Link
                 href="https://share.google/Wc7aBfzA9pRbIOMg2"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-900 transition-colors group"
+                className="inline-flex items-center gap-2.5 text-sm text-gray-400 hover:text-gray-600 transition-colors"
               >
-                <SiGoogle size={16} className="text-blue-600" />
-                <div className="flex items-center gap-1">
+                <GoogleIcon size={20} />
+                <div className="flex gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <FaStar key={i} size={10} className="text-yellow-400" />
+                    <FaStar key={i} size={13} className="text-yellow-400" />
                   ))}
                 </div>
-                <span className="font-medium">5.0 rating</span>
-                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                <span className="font-medium text-gray-500">Read or leave a review</span>
               </Link>
-
-              <div className="h-4 w-px bg-gray-300 hidden sm:block"></div>
-
-              <p className="text-sm text-gray-600">
-                <span className="font-semibold text-gray-900">9 locations:</span> Parit Buntar, Taiping, Ipoh, Bukit Mertajam, Bayan Baru, Alor Setar, Seri Iskandar, Manjung, Kangar
-              </p>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Column - Gallery Carousel */}
-          <motion.div
-            className="relative flex justify-center lg:justify-end"
-            variants={imageVariants}
-          >
-            <div className="relative w-full">
-              {/* Main Carousel Container */}
-              <div className="relative rounded-2xl overflow-hidden bg-white shadow-xl border border-gray-100">
-                <div className="relative aspect-[4/5]">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentImageIndex}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.6 }}
-                      className="relative w-full h-full"
-                    >
-                      <Image
-                        src={carouselImages[currentImageIndex].src}
-                        alt={carouselImages[currentImageIndex].alt}
-                        fill
-                        priority={currentImageIndex === 0}
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, 550px"
-                      />
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-
-              {/* Thumbnail Navigation */}
-              <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-6">
-                {carouselImages.map((image, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 min-w-[56px] min-h-[56px] rounded-lg overflow-hidden transition-all duration-300 ${
-                      index === currentImageIndex
-                        ? "ring-2 ring-gray-900 ring-offset-2 scale-105"
-                        : "ring-1 ring-gray-200 hover:ring-gray-400 opacity-60 hover:opacity-100"
-                    }`}
-                    aria-label={`View image ${index + 1}`}
-                  >
-                    <Image
-                      src={image.src}
-                      alt={`Thumbnail ${index + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 56px, (max-width: 768px) 64px, 80px"
-                    />
-                  </button>
-                ))}
-              </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+
+          {/* Right - Phone Image with blob shape */}
+          <div ref={phoneRef} className="flex-1 w-full flex justify-center lg:justify-end hero-phone">
+            <div className="relative w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] lg:w-[520px] lg:h-[520px]">
+              {/* Blob background shape */}
+              <div
+                className="absolute inset-[-10%] bg-gradient-to-br from-[#F0F7FF] via-[#F5F0FF] to-[#FFF8F0] opacity-80"
+                style={{ borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%" }}
+              />
+              <Image
+                src="/images/product.png"
+                alt="Premium mobile phones - TrendMalayaa mobile specialist Malaysia"
+                fill
+                priority
+                className="object-contain relative z-10 drop-shadow-2xl"
+                sizes="(max-width: 640px) 340px, (max-width: 1024px) 420px, 520px"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,107 +1,217 @@
 "use client";
 
-import { FaGoogle, FaStar } from "react-icons/fa";
-import { ReactGoogleReviews } from "react-google-reviews";
-import "react-google-reviews/dist/index.css";
+import { useRef } from "react";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
-// TODO: Replace "example" with your real Featurable widget ID
-// 1. Create free account at https://featurable.com
-// 2. Set up widget with your Google Business profile
-// 3. Click "Embed" → "API" → copy widget ID
-const FEATURABLE_WIDGET_ID = "example";
+const GoogleIcon = ({ size = 20, className = "" }: { size?: number; className?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+  </svg>
+);
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const reviews = [
+  {
+    name: "Ahmad Firdaus",
+    initial: "AF",
+    rating: 5,
+    text: "Best phone repair shop in Malaysia! Fixed my iPhone screen in just 30 minutes. The staff was very professional and friendly. Highly recommended for anyone looking for quality repair services.",
+    url: "https://share.google/4DvOANI8W1A0579xR",
+    bgColor: "#F0F7FF",
+    accentColor: "#008AFC",
+  },
+  {
+    name: "Nur Aisyah",
+    initial: "NA",
+    rating: 5,
+    text: "Amazing service! I bought my iPhone here with installment plan. Very easy process and the price is competitive. Will definitely come back for accessories too.",
+    url: "https://share.google/wyLgeUhQYtLFylpid",
+    bgColor: "#F5F0FF",
+    accentColor: "#7C3AED",
+  },
+  {
+    name: "Muhammad Haziq",
+    initial: "MH",
+    rating: 5,
+    text: "Very satisfied with the battery replacement service. My phone feels brand new again! The warranty they provide gives me peace of mind. Thank you TrendMalayaa!",
+    url: "https://share.google/FVwOsqQB670nWbVFU",
+    bgColor: "#FFF0E6",
+    accentColor: "#F59E0B",
+  },
+  {
+    name: "Siti Nurhaliza",
+    initial: "SN",
+    rating: 5,
+    text: "Great experience from start to finish. The team really knows their stuff when it comes to phone repairs. Fair pricing and fast turnaround. My go-to shop now!",
+    url: "https://share.google/Rn9z9owLnYf5i10z4",
+    bgColor: "#F0FFF4",
+    accentColor: "#10B981",
+  },
+];
 
 export default function CustomerReviews() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      // Heading fade in
+      gsap.from(".reviews-heading", {
+        y: 50,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".reviews-heading",
+          start: "top 85%",
+        },
+      });
+
+      // Each card gets its OWN ScrollTrigger — fades in individually as user scrolls
+      const cards = gsap.utils.toArray<HTMLElement>(".review-card");
+      cards.forEach((card, i) => {
+        // Alternate: odd cards come from left, even from right
+        const xOffset = i % 2 === 0 ? -40 : 40;
+
+        gsap.fromTo(
+          card,
+          {
+            opacity: 0,
+            y: 50,
+            x: xOffset,
+            scale: 0.95,
+          },
+          {
+            opacity: 1,
+            y: 0,
+            x: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+              end: "top 20%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      });
+
+      // CTA button
+      gsap.from(".reviews-cta", {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".reviews-cta",
+          start: "top 90%",
+        },
+      });
+    },
+    { scope: sectionRef }
+  );
+
   return (
-    <section id="reviews" className="w-full relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 py-12 sm:py-16 md:py-24">
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-600 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gray-900 rounded-full blur-3xl"></div>
-      </div>
-
-      {/* Pattern Overlay */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
-        backgroundImage: 'radial-gradient(circle at 2px 2px, gray 1px, transparent 0)',
-        backgroundSize: '40px 40px'
-      }}></div>
-
+    <section ref={sectionRef} id="reviews" className="w-full relative overflow-hidden bg-[#FFF8F0] py-16 sm:py-20 md:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-8 sm:mb-12">
+        <div className="reviews-heading text-center mb-12 sm:mb-16">
           {/* Google Badge */}
-          <div className="inline-flex items-center justify-center gap-2 mb-4 sm:mb-6 bg-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg border border-gray-100">
-            <FaGoogle className="text-2xl sm:text-3xl text-blue-600 flex-shrink-0" />
-            <div className="flex gap-0.5 sm:gap-1">
+          <div className="inline-flex items-center justify-center gap-3 mb-6 bg-white px-6 py-3 rounded-full shadow-md border border-gray-100">
+            <GoogleIcon size={24} />
+            <div className="flex gap-0.5">
               {[1, 2, 3, 4, 5].map((star) => (
-                <FaStar key={star} className="text-yellow-400 text-base sm:text-xl" />
+                <FaStar key={star} className="text-yellow-400 text-lg" />
               ))}
             </div>
+            <span className="text-sm font-semibold text-gray-700">5.0</span>
           </div>
 
           <h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight px-4"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
-            Trusted by Thousands of Customers
-            <br className="hidden sm:block" />
-            <span className="text-gray-600"> Across Malaysia</span>
+            What Our Customers Say
           </h2>
 
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto mb-6 sm:mb-8 px-4">
-            Real reviews from real customers who trust us for their mobile needs
+          <p className="text-base sm:text-lg text-gray-500 max-w-xl mx-auto">
+            Real reviews from real customers across Malaysia
           </p>
-
-          {/* Trust Badges Row */}
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-10 px-4">
-            <div className="inline-flex items-center gap-2 bg-white px-3 sm:px-4 py-2 min-h-[40px] rounded-full shadow-md border border-gray-100">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-              </svg>
-              <span className="text-xs sm:text-sm font-semibold text-gray-700 whitespace-nowrap">Verified Reviews</span>
-            </div>
-            <div className="inline-flex items-center gap-2 bg-white px-3 sm:px-4 py-2 min-h-[40px] rounded-full shadow-md border border-gray-100">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-              </svg>
-              <span className="text-xs sm:text-sm font-semibold text-gray-700 whitespace-nowrap">50,000+ Customers</span>
-            </div>
-            <div className="inline-flex items-center gap-2 bg-white px-3 sm:px-4 py-2 min-h-[40px] rounded-full shadow-md border border-gray-100">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
-              </svg>
-              <span className="text-xs sm:text-sm font-semibold text-gray-700 whitespace-nowrap">4.9 Rating</span>
-            </div>
-          </div>
         </div>
 
-        {/* Google Reviews Widget */}
-        <div className="max-w-6xl mx-auto">
-          <ReactGoogleReviews
-            layout="carousel"
-            featurableId={FEATURABLE_WIDGET_ID}
-            theme="light"
-            nameDisplay="firstAndLastInitials"
-            dateDisplay="relative"
-            reviewVariant="card"
-            maxCharacters={200}
-            carouselAutoplay={true}
-            carouselSpeed={5000}
-            structuredData={true}
-            brandName="TrendMalayaa"
-          />
+        {/* Review Cards Grid - all 4 visible */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+          {reviews.map((review, index) => (
+            <a
+              key={index}
+              href={review.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="review-card group block rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              style={{ backgroundColor: review.bgColor }}
+            >
+              {/* Quote icon */}
+              <FaQuoteLeft
+                className="mb-4 opacity-20"
+                size={24}
+                style={{ color: review.accentColor }}
+              />
+
+              {/* Review text */}
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+                {review.text}
+              </p>
+
+              {/* Reviewer info */}
+              <div className="flex items-center gap-3">
+                {/* Avatar */}
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0"
+                  style={{ backgroundColor: review.accentColor }}
+                >
+                  {review.initial}
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <p className="font-semibold text-gray-900 text-sm">{review.name}</p>
+                  <div className="flex gap-0.5 mt-0.5">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <FaStar key={i} size={11} className="text-yellow-400" />
+                    ))}
+                  </div>
+                </div>
+
+                {/* Google icon */}
+                <GoogleIcon size={18} className="flex-shrink-0" />
+              </div>
+            </a>
+          ))}
         </div>
 
         {/* Read All Reviews Button */}
-        <div className="text-center mt-8 sm:mt-12">
+        <div className="reviews-cta text-center mt-10 sm:mt-14">
           <a
             href="https://share.google/Wc7aBfzA9pRbIOMg2"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 sm:gap-3 bg-gray-900 hover:bg-black text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] rounded-xl transition-all shadow-lg hover:shadow-xl text-sm sm:text-base group"
+            className="inline-flex items-center gap-3 bg-gray-900 hover:bg-black text-white font-semibold px-8 py-4 rounded-full transition-all shadow-lg hover:shadow-xl text-sm sm:text-base group"
           >
-            <FaGoogle className="text-lg sm:text-xl group-hover:scale-110 transition-transform flex-shrink-0" />
-            <span className="whitespace-nowrap">Read All Google Reviews</span>
-            <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <GoogleIcon size={20} />
+            <span>Read All Google Reviews</span>
+            <svg
+              className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </a>
