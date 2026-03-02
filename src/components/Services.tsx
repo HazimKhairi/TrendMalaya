@@ -191,7 +191,7 @@ const Services = () => {
               { text: "Fast Approval", icon: <FaBolt size={15} /> },
             ]}
             bgColor="#F0FFF4"
-            imageSrc="/images/new_images/payment_brands.png"
+            imageSrc="/images/new_images/installment.png"
             imageAlt="Easy Payment & Installment Options - TrendMalayaa"
             blobRadius="60% 40% 40% 60% / 40% 60% 40% 60%"
           />
