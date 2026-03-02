@@ -54,7 +54,7 @@ const ServiceCard = ({
             src={imageSrc}
             alt={imageAlt}
             fill
-            className="object-contain relative z-10 p-2"
+            className="object-cover relative z-10 p-2"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         </div>
@@ -76,7 +76,7 @@ const ServiceCard = ({
               className="flex items-start gap-2.5 text-sm text-gray-500"
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
-              <span className="mt-0.5 flex-shrink-0 text-[#008AFC]">
+              <span className="mt-0.5 flex-shrink-0 text-[#5B0A0A]">
                 {feature.icon}
               </span>
               <span>{feature.text}</span>
@@ -106,18 +106,26 @@ const Services = () => {
         },
       });
 
-      // Cards stagger
-      gsap.from(".service-card", {
-        y: 80,
-        opacity: 0,
-        duration: 0.7,
-        stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: ".service-card",
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
+      // Each card staggers via increasing start offset
+      const cards = gsap.utils.toArray<HTMLElement>(".service-card");
+      cards.forEach((card, i) => {
+        const startOffset = 90 - i * 8; // 90%, 82%, 74%, 66%
+        gsap.fromTo(
+          card,
+          { opacity: 0, y: 60, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.7,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: card,
+              start: `top ${startOffset}%`,
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
       });
     },
     { scope: sectionRef }
@@ -158,7 +166,7 @@ const Services = () => {
               { text: "Apple Original & OEM Quality Parts", icon: <FaCheckCircle size={15} /> },
             ]}
             bgColor="#F5F0FF"
-            imageSrc="/images/new_images/exhibit_b.png"
+            imageSrc="/images/new_images/sameday_professional_repair.png"
             imageAlt="Professional Phone Repair Services - TrendMalayaa"
             blobRadius="70% 30% 30% 70% / 70% 70% 30% 30%"
           />
@@ -173,7 +181,7 @@ const Services = () => {
               { text: "Protection Case", icon: <FaShieldAlt size={15} /> },
             ]}
             bgColor="#FFF8F0"
-            imageSrc="/images/image.png"
+            imageSrc="/images/new_images/premium_accessories.png"
             imageAlt="Premium Phone Accessories & Gadgets - TrendMalayaa"
             blobRadius="40% 60% 60% 40% / 60% 40% 60% 40%"
           />
