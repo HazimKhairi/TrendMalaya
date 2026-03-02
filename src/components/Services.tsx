@@ -42,19 +42,15 @@ const ServiceCard = ({
   blobRadius,
 }: ServiceCardProps) => {
   return (
-    <div className="service-card rounded-3xl flex flex-col overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-500 bg-white">
-      {/* Image Section with blob shape */}
-      <div className="relative p-6 pb-0 flex justify-center" style={{ backgroundColor: bgColor }}>
+    <div className="service-card group rounded-3xl flex flex-col overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 bg-white">
+      {/* Image Section - full width, no padding, no blob */}
+      <div className="relative overflow-hidden rounded-t-3xl" style={{ backgroundColor: bgColor }}>
         <div className="relative w-full aspect-[4/3]">
-          <div
-            className="absolute inset-0 bg-white/30"
-            style={{ borderRadius: blobRadius }}
-          />
           <Image
             src={imageSrc}
             alt={imageAlt}
             fill
-            className="object-cover relative z-10 p-2"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
         </div>

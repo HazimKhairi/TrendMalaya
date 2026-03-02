@@ -150,7 +150,7 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 footer-content">
         {/* Tagline */}
         <div className="text-center mb-8 sm:mb-12">
-          <p className="text-base sm:text-lg md:text-xl font-bold text-[#008AFC] px-4">
+          <p className="text-base sm:text-lg md:text-xl font-bold text-[#5B0A0A] px-4">
             Malaysia's Trusted Mobile Specialist with Multiple Branches Nationwide.
           </p>
         </div>
@@ -170,7 +170,7 @@ export default function Footer() {
               </div>
               <div className="flex flex-col">
                 <span className="text-lg sm:text-xl font-bold">
-                  <span className="text-[#008AFC]">Trend</span>
+                  <span className="text-[#5B0A0A]">Trend</span>
                   <span className="text-white">Malayaa</span>
                 </span>
                 <span className="text-xs text-gray-400">Mobile Shop MY</span>
@@ -187,7 +187,7 @@ export default function Footer() {
                 href="https://www.tiktok.com/@syafi.sayuti"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#008AFC] rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#5B0A0A] rounded-full flex items-center justify-center transition-colors"
                 aria-label="Follow us on TikTok"
               >
                 <FaTiktok className="text-white text-lg" />
@@ -196,7 +196,7 @@ export default function Footer() {
                 href="https://www.instagram.com/trendmalayaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#008AFC] rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#5B0A0A] rounded-full flex items-center justify-center transition-colors"
                 aria-label="Follow us on Instagram"
               >
                 <FaInstagram className="text-white text-lg" />
@@ -205,7 +205,7 @@ export default function Footer() {
                 href="https://www.facebook.com/trendmalayaa"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#008AFC] rounded-full flex items-center justify-center transition-colors"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] bg-gray-800 hover:bg-[#5B0A0A] rounded-full flex items-center justify-center transition-colors"
                 aria-label="Follow us on Facebook"
               >
                 <FaFacebook className="text-white text-lg" />
@@ -215,7 +215,7 @@ export default function Footer() {
 
           {/* Column 2 - Our Services */}
           <div>
-            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#008AFC] pb-2 inline-block">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#5B0A0A] pb-2 inline-block">
               Our Services
             </h6>
             <ul className="space-y-2 sm:space-y-3">
@@ -223,9 +223,9 @@ export default function Footer() {
                 <li key={service.name}>
                   <Link
                     href={service.href}
-                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-[#008AFC] transition-colors group min-h-[44px] py-1"
+                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-[#5B0A0A] transition-colors group min-h-[44px] py-1"
                   >
-                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-[#008AFC] flex-shrink-0" />
+                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-[#5B0A0A] flex-shrink-0" />
                     <span>{service.name}</span>
                   </Link>
                 </li>
@@ -235,7 +235,7 @@ export default function Footer() {
 
           {/* Column 3 - Quick Links */}
           <div>
-            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#008AFC] pb-2 inline-block">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#5B0A0A] pb-2 inline-block">
               Quick Links
             </h6>
             <ul className="space-y-2 sm:space-y-3">
@@ -243,9 +243,9 @@ export default function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-[#008AFC] transition-colors group min-h-[44px] py-1"
+                    className="flex items-center gap-2 text-sm sm:text-base text-gray-400 hover:text-[#5B0A0A] transition-colors group min-h-[44px] py-1"
                   >
-                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-[#008AFC] flex-shrink-0" />
+                    <FaChevronRight className="text-xs group-hover:translate-x-1 transition-transform text-[#5B0A0A] flex-shrink-0" />
                     <span>{link.name}</span>
                   </Link>
                 </li>
@@ -255,7 +255,7 @@ export default function Footer() {
 
           {/* Column 4 - Locations Part 1 */}
           <div>
-            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#008AFC] pb-2 inline-block">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 border-b-2 border-[#5B0A0A] pb-2 inline-block">
               Our Locations
             </h6>
             <div className="space-y-3 sm:space-y-5 md:space-y-6">
@@ -291,7 +291,7 @@ export default function Footer() {
 
           {/* Column 5 - Locations Part 2 */}
           <div>
-            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 hidden md:block border-b-2 border-[#008AFC] pb-2">
+            <h6 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 hidden md:block border-b-2 border-[#5B0A0A] pb-2">
               &nbsp;
             </h6>
             <div className="space-y-3 sm:space-y-5 md:space-y-6">
@@ -330,7 +330,7 @@ export default function Footer() {
         <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-gray-800">
           <div className="max-w-5xl mx-auto px-4">
             <p className="text-gray-400 text-xs sm:text-sm leading-relaxed text-center">
-              <strong className="text-white">TrendMalayaa</strong> is a trusted <strong className="text-[#008AFC]">kedai phone</strong> dan <strong className="text-[#008AFC]">iPhone repair specialist</strong> in Malaysia with 11 branches in <strong className="text-white">Parit Buntar, Taiping, Alor Setar, Kangar, Ipoh, Manjung, Bayan Baru, Shah Alam, Teluk Intan</strong> and more. We provide professional <strong className="text-white">phone repair, iPhone sales, accessories</strong> and <strong className="text-white">installment options</strong> with fast and reliable service.
+              <strong className="text-white">TrendMalayaa</strong> is a trusted <strong className="text-[#5B0A0A]">kedai phone</strong> dan <strong className="text-[#5B0A0A]">iPhone repair specialist</strong> in Malaysia with 11 branches in <strong className="text-white">Parit Buntar, Taiping, Alor Setar, Kangar, Ipoh, Manjung, Bayan Baru, Shah Alam, Teluk Intan</strong> and more. We provide professional <strong className="text-white">phone repair, iPhone sales, accessories</strong> and <strong className="text-white">installment options</strong> with fast and reliable service.
             </p>
           </div>
         </div>
@@ -338,7 +338,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-800">
           <p className="text-center text-gray-500 text-xs sm:text-sm px-4">
-            Copyright © 2026 by <span className="text-[#008AFC] font-semibold">TrendMalayaa</span> Mobile Specialist. All rights reserved.
+            Copyright © 2026 by <span className="text-[#5B0A0A] font-semibold">TrendMalayaa</span> Mobile Specialist. All rights reserved.
           </p>
         </div>
       </div>

@@ -110,28 +110,28 @@ export default function TikTokFeed() {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-black mb-6 sm:mb-8 px-4"
             style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
           >
-            <span className="text-[#008AFC]">10,000,000+</span> Views on TikTok —
+            <span className="text-[#1E3A8A]">10,000,000+</span> Views on TikTok —
             <br className="hidden sm:inline" /> Trusted by Thousands
           </h2>
 
           {/* Statistics Grid */}
           <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8 sm:mb-10">
             <div className="tiktok-stat bg-[#F0F7FF] rounded-2xl p-5 sm:p-6">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#008AFC] mb-1">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-1">
                 300K+
               </div>
               <div className="text-gray-600 font-medium text-sm sm:text-base">Followers</div>
             </div>
 
             <div className="tiktok-stat bg-[#F5F0FF] rounded-2xl p-5 sm:p-6">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#008AFC] mb-1">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-1">
                 10M+
               </div>
               <div className="text-gray-600 font-medium text-sm sm:text-base">Total Views</div>
             </div>
 
             <div className="tiktok-stat bg-[#FFF8F0] rounded-2xl p-5 sm:p-6">
-              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#008AFC] mb-1">
+              <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1E3A8A] mb-1">
                 50K+
               </div>
               <div className="text-gray-600 font-medium text-sm sm:text-base">Customers Served</div>
@@ -157,7 +157,7 @@ export default function TikTokFeed() {
         <div className="max-w-6xl mx-auto">
           {scriptLoading && !scriptError && (
             <div className="flex flex-col items-center justify-center py-16">
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#008AFC]"></div>
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#1E3A8A]"></div>
               <p className="mt-6 text-gray-500 text-lg">Loading TikTok feed...</p>
             </div>
           )}
@@ -173,7 +173,7 @@ export default function TikTokFeed() {
                 href="https://www.tiktok.com/@syafi.sayuti"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#008AFC] text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+                className="inline-flex items-center gap-3 bg-[#1E3A8A] text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-lg"
               >
                 <FaTiktok className="text-xl" />
                 Follow TrendMalayaa on TikTok

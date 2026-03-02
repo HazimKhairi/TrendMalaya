@@ -51,7 +51,7 @@ export default function Hero() {
     if (now - lastSpawnRef.current < 40) return; // throttle
     lastSpawnRef.current = now;
 
-    const colors = ["#008AFC", "#7C3AED", "#F59E0B", "#10B981", "#EC4899"];
+    const colors = ["#5B0A0A", "#7C3AED", "#F59E0B", "#10B981", "#EC4899"];
     const color = colors[particleIdRef.current % colors.length];
     particleIdRef.current++;
 
@@ -182,7 +182,7 @@ export default function Hero() {
                 href="https://wa.me/601156363571"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#008AFC] hover:bg-[#0070d0] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-colors text-base shadow-lg shadow-blue-200/50 hover:shadow-blue-300/60"
+                className="bg-[#5B0A0A] hover:bg-[#4A0808] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-colors text-base shadow-lg shadow-red-900/30 hover:shadow-red-900/40"
               >
                 Start Repair
                 <FaChevronRight size={12} />
