@@ -194,7 +194,7 @@ export default function Hero() {
                   href="https://wa.me/60182183571?text=Hi%2C%20I'm%20interested%20in%20Buy%20Now%2C%20Pay%20Later"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-[#5B0A0A] to-[#7C3AED] hover:from-[#4A0808] hover:to-[#6B21A8] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-all text-base shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 hover:scale-105"
+                  className="bg-[#D1FAE5] hover:bg-[#A7F3D0] text-[#065F46] font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-all text-base shadow-lg shadow-emerald-200/50 hover:shadow-emerald-300/60 hover:scale-105 border-2 border-[#A7F3D0]"
                 >
                   Buy Now, Pay Later
                   <FaChevronRight size={12} />
