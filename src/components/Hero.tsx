@@ -176,17 +176,30 @@ export default function Hero() {
               We can fix your phone.
             </p>
 
-            <div className="flex flex-wrap items-center gap-5">
-              {/* Start Repair CTA */}
-              <a
-                href="https://wa.me/601156363571"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#5B0A0A] hover:bg-[#4A0808] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-colors text-base shadow-lg shadow-red-900/30 hover:shadow-red-900/40"
-              >
-                Start Repair
-                <FaChevronRight size={12} />
-              </a>
+            <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-5">
+              <div className="flex flex-wrap items-center gap-4">
+                {/* Start Repair CTA */}
+                <a
+                  href="https://wa.me/601156363571"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-[#5B0A0A] hover:bg-[#4A0808] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-colors text-base shadow-lg shadow-red-900/30 hover:shadow-red-900/40"
+                >
+                  Start Repair
+                  <FaChevronRight size={12} />
+                </a>
+
+                {/* Buy Now, Pay Later CTA */}
+                <a
+                  href="https://wa.me/60182183571?text=Hi%2C%20I'm%20interested%20in%20Buy%20Now%2C%20Pay%20Later"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-[#5B0A0A] to-[#7C3AED] hover:from-[#4A0808] hover:to-[#6B21A8] text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2.5 transition-all text-base shadow-lg shadow-purple-900/30 hover:shadow-purple-900/50 hover:scale-105"
+                >
+                  Buy Now, Pay Later
+                  <FaChevronRight size={12} />
+                </a>
+              </div>
 
               {/* Google Review */}
               <Link
